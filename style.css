@@ -174,4 +174,29 @@ body {
     to {
         transform: rotateY(360deg);
     }
+
+    /* ใช้ GPU ช่วยเรนเดอร์เพื่อให้ไม่หน่วง */
+    .letter,
+    .center-logo {
+        will-change: transform, opacity;
+        transform: translateZ(0);
+    }
+
+    /* ลดภาระ text-shadow ที่หนักหน่วง ให้เหลือความฟุ้งพอดีๆ */
+    @keyframes fadeWave {
+
+        0%,
+        100% {
+            opacity: 0.1;
+            transform: translateY(0);
+        }
+
+        50% {
+            opacity: 1;
+            transform: translateY(20px);
+            /* ลดระยะจาก 30px เหลือ 20px ให้เบาลง */
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+            /* ลดเงาให้เบาลงเพื่อความลื่น */
+        }
+    }
 }
